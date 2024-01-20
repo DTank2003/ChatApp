@@ -36,7 +36,7 @@ const ProfileModal = ({ user, children }) => {
           {" "}
           <ModalHeader
             fontSize="40px"
-            fontFamily="Work sans"
+            fontFamily="Nunito, sans-serif"
             justifyContent="center"
           >
             {user.name}
@@ -56,7 +56,7 @@ const ProfileModal = ({ user, children }) => {
             />
             <Text
               fontSize={{ base: "28px", md: "30px" }}
-              fontFamily="Playfair Display"
+              fontFamily="Nunito, sans-serif"
             >
               Email: {user.email}
             </Text>

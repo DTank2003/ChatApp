@@ -13,7 +13,7 @@ import { Stack, HStack, VStack } from "@chakra-ui/react";
 import { Button } from "@chakra-ui/button";
 import { Box, Text } from "@chakra-ui/layout";
 import axios from "axios";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { BellIcon, ChevronDownIcon } from "@chakra-ui/icons";
 import ChatProvider, { ChatState } from "../../Context/ChatProvider";
 import ProfileModal from "./ProfileModal";
@@ -33,7 +33,7 @@ const SideDrawer = () => {
   const [loading, setLoading] = useState(false);
   const [loadingChat, setLoadingChat] = useState();
   const toast = useToast();
-  const { user } = ChatState();
+  const { user, setSelectedChat, chats, setChats } = ChatState();
   console.log("User in SideDrawer:", user);
   const history = useHistory();
 
@@ -81,7 +81,36 @@ const SideDrawer = () => {
     }
   };
 
-  const accessChat = async (userId) => {};
+  const accessChat = async (userId) => {
+    console.log(userId);
+
+    try {
+      setLoadingChat(true);
+      const config = {
+        headers: {
+          "Content-type": "application/json",
+          Authorization: `Bearer ${user.token}`,
+        },
+      };
+      const { data } = await axios.post(`/api/chat`, { userId }, config);
+      console.log(data);
+
+      if (!chats.find((c) => c._id === data._id)) setChats([data, ...chats]);
+
+      setSelectedChat(data);
+      setLoadingChat(false);
+      onClose();
+    } catch (error) {
+      toast({
+        title: "Error fetching the chat",
+        description: error.message,
+        status: "error",
+        duration: 5000,
+        isClosable: true,
+        position: "bottom-left",
+      });
+    }
+  };
 
   return (
     <>
@@ -91,8 +120,10 @@ const SideDrawer = () => {
         alignItems="center"
         bg="violet"
         w="100%"
+        fontFamily="Nunito, sans-serif"
         p="5px 10px 5px 10px"
         borderWidth="5px"
+        h="60px"
       >
         <Tooltip label="Search users to chat" hasArrow placement="bottom-end">
           <Button variant="ghost" onClick={onOpen}>
@@ -100,7 +131,7 @@ const SideDrawer = () => {
             <Text ml="2">Search User</Text>
           </Button>
         </Tooltip>
-        <Text fontSize="2xl" fontFamily="Work sans">
+        <Text fontSize="2xl" fontFamily="Nunito, sans-serif">
           Talk-Hub
         </Text>
         <HStack spacing={4}>
