@@ -1,0 +1,10 @@
+@import url('https://fonts.googleapis.com/css2?family=Lato:wght@100&family=Open+Sans&family=Varela+Round&display=swap');
+
+.App {
+  min-height: 100vh;
+  display: flex;
+  background-image: url("./bg.jpg");
+  background-size: cover;
+  background-position: center;
+}
+
