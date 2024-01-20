@@ -9,6 +9,7 @@ import {
   useToast,
   Toast,
 } from "@chakra-ui/react";
+import { Stack, HStack, VStack } from "@chakra-ui/react";
 import { Button } from "@chakra-ui/button";
 import { Box, Text } from "@chakra-ui/layout";
 import axios from "axios";
@@ -85,10 +86,10 @@ const SideDrawer = () => {
   return (
     <>
       <Box
-        d="flex"
+        display="flex"
         justifyContent="space-between"
         alignItems="center"
-        bg="white"
+        bg="violet"
         w="100%"
         p="5px 10px 5px 10px"
         borderWidth="5px"
@@ -96,20 +97,16 @@ const SideDrawer = () => {
         <Tooltip label="Search users to chat" hasArrow placement="bottom-end">
           <Button variant="ghost" onClick={onOpen}>
             <i class="fa-solid fa-magnifying-glass"></i>
-
-            <Text d={{ base: "none", md: "flex" }} px="4">
-              Search User
-            </Text>
+            <Text ml="2">Search User</Text>
           </Button>
         </Tooltip>
         <Text fontSize="2xl" fontFamily="Work sans">
           Talk-Hub
         </Text>
-        <div>
+        <HStack spacing={4}>
+          {" "}
           <Menu>
-            <MenuButton p={1}>
-              <BellIcon fontSize="2x1" m={1} />
-            </MenuButton>
+            <MenuButton p={1}></MenuButton>
           </Menu>
           <Menu>
             <MenuButton as={Button} rightIcon={<ChevronDownIcon />}>
@@ -122,14 +119,15 @@ const SideDrawer = () => {
             </MenuButton>
             <MenuList>
               <ProfileModal user={user}>
-                <MenuItem>My Profile</MenuItem>
+                <MenuItem>My Profile</MenuItem>{" "}
               </ProfileModal>
               <MenuDivider />
               <MenuItem onClick={logoutHandler}>Logout</MenuItem>
             </MenuList>
           </Menu>
-        </div>
+        </HStack>
       </Box>
+
       <Drawer placement="left" onClose={onClose} isOpen={isOpen}>
         <DrawerOverlay />
         <DrawerContent>

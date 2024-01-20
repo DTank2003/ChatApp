@@ -27,11 +27,16 @@ const ProfileModal = ({ user, children }) => {
       )}
       <Modal size="lg" isOpen={isOpen} onClose={onClose} isCentered>
         <ModalOverlay />
-        <ModalContent h="400px">
+        <ModalContent
+          h="400px"
+          d="flex"
+          justifyContent="center"
+          alignItems="center"
+        >
+          {" "}
           <ModalHeader
             fontSize="40px"
             fontFamily="Work sans"
-            d="flex"
             justifyContent="center"
           >
             {user.name}
@@ -40,24 +45,25 @@ const ProfileModal = ({ user, children }) => {
           <ModalBody
             d="flex"
             flexDir="column"
+            justifyContent="center"
             alignItems="center"
-            justifyContent="space-between"
           >
             <Image
               borderRadius="full"
               boxSize="150px"
               src={user.pic}
               alt={user.name}
-            ></Image>
+            />
             <Text
               fontSize={{ base: "28px", md: "30px" }}
-              fontFamily="Work sans"
+              fontFamily="Playfair Display"
             >
               Email: {user.email}
             </Text>
           </ModalBody>
-
-          <ModalFooter>
+          <ModalFooter d="flex" justifyContent="center">
+            {" "}
+            {/* Center content within ModalFooter */}
             <Button colorScheme="blue" mr={3} onClick={onClose}>
               Close
             </Button>
