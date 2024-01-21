@@ -66,7 +66,7 @@ const MyChats = (fetchAgain) => {
         fontFamily="Nunito, sans-serif"
         d="flex"
         w="100%"
-        bg="yellow"
+        bg="grey"
         borderRadius="lg"
         borderWidth="1px"
         justifyContent="space-between"
@@ -89,7 +89,7 @@ const MyChats = (fetchAgain) => {
         mt={4}
         p={3}
         w="100%"
-        bg="purple"
+        bg="grey"
         borderRadius="lg"
         overflowY="hidden"
       >
