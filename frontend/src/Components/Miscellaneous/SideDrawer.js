@@ -118,12 +118,13 @@ const SideDrawer = () => {
         display="flex"
         justifyContent="space-between"
         alignItems="center"
-        bg="violet"
+        bg="#000080 -> #ff00ff"
         w="100%"
         fontFamily="Nunito, sans-serif"
         p="5px 10px 5px 10px"
-        borderWidth="5px"
         h="60px"
+        borderRadius="lg"
+        borderWidth="3px"
       >
         <Tooltip label="Search users to chat" hasArrow placement="bottom-end">
           <Button variant="ghost" onClick={onOpen}>
@@ -168,6 +169,7 @@ const SideDrawer = () => {
               <Input
                 placeholder="Search by name or email"
                 mr={2}
+                mb={2}
                 value={search}
                 onChange={(e) => setSearch(e.target.value)}
               />

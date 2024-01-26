@@ -51,13 +51,13 @@ const MyChats = (fetchAgain) => {
       alignItems="stretch"
       p={3}
       h="88%" // Ensure full height
-      bg="white"
+      bg="#524d9b -> #a8c0ff"
       w={{ base: "100%", md: "31%" }}
       position="absolute"
       top="68px"
       bottom="30px"
       borderRadius="lg"
-      borderWidth="1px"
+      borderWidth="3px"
     >
       <Box
         pb={3}
@@ -66,21 +66,24 @@ const MyChats = (fetchAgain) => {
         fontFamily="Nunito, sans-serif"
         d="flex"
         w="100%"
-        bg="grey"
+        bg="#524d9b -> #a8c0ff"
         borderRadius="lg"
-        borderWidth="1px"
-        justifyContent="space-between"
+        borderWidth="3px"
+        // justifyContent="space-between"
         alignItems="center"
       >
         CHATS
         <GroupChatModal>
-          <Button
-            d="flex"
-            fontSize={{ base: "17px", md: "10px", lg: "17px" }}
-            rightIcon={<AddIcon />}
-          >
-            New Group Chat
-          </Button>
+          <Box justifyContent="flex-end">
+            <Button
+              justifyContent="flex-end"
+              fontFamily="Nunito, sans-serif"
+              fontSize={{ base: "17px", md: "10px", lg: "17px" }}
+              rightIcon={<AddIcon />}
+            >
+              New Group Chat
+            </Button>
+          </Box>
         </GroupChatModal>
       </Box>
       <Box
@@ -89,7 +92,7 @@ const MyChats = (fetchAgain) => {
         mt={4}
         p={3}
         w="100%"
-        bg="grey"
+        bg="sky-blue;"
         borderRadius="lg"
         overflowY="hidden"
       >

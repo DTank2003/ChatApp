@@ -12,14 +12,14 @@ const ChatBox = ({ fetchAgain, setFetchAgain }) => {
       flexDir="column"
       alignItems="stretch"
       p={3}
-      bg="white"
+      bg="#524d9b -> #a8c0ff"
       position="absolute"
       w="67%" // Span the full width
       h="88%" // Ensure full height
       top="68px"
       bottom="30px"
       borderRadius="lg"
-      borderWidth="1px"
+      borderWidth="3px"
       left="32.2%" // Position to the right of the white box (31% from the right edge)
       mr={4} // Add right margin
       mb={4} // Add bottom margin
