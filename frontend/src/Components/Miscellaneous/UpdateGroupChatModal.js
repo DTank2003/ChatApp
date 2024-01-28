@@ -1,6 +1,7 @@
 import {
   Box,
   Button,
+  Flex,
   FormControl,
   IconButton,
   Input,
@@ -209,69 +210,81 @@ const UpdateGroupChatModal = ({ fetchAgain, setFetchAgain, fetchMessages }) => {
       <Modal onClose={onClose} isOpen={isOpen} isCentered>
         <ModalOverlay />
         <ModalContent>
-          <ModalHeader
-            fontSize="35px"
-            fontFamily="Nunito, sans-serif"
-            d="flex"
-            justifyContent="center"
+          <Box
+            w="100%"
+            h="100%"
+            bgGradient="linear(to right, #659999, #f4791f);"
+            borderRadius="md"
+            p={4}
           >
-            {selectedChat.chatName}
-          </ModalHeader>
-
-          <ModalCloseButton />
-          <ModalBody d="flex" flexDir="column" alignItems="center">
-            <Box w="100%" d="flex" flexWrap="wrap" pb={3}>
-              {selectedChat.users.map((u) => (
-                <UserBadgeItem
-                  key={u._id}
-                  user={u}
-                  admin={selectedChat.groupAdmin}
-                  handleFunction={() => handleRemove(u)}
-                />
-              ))}
-            </Box>
-            <FormControl d="flex">
-              <Input
-                placeholder="Chat Name"
-                mb={3}
-                value={groupChatName}
-                onChange={(e) => setGroupChatName(e.target.value)}
-              />
-              <Button
-                variant="solid"
-                colorScheme="teal"
-                ml={1}
-                isLoading={renameloading}
-                onClick={handleRename}
+            <Flex direction="column" alignItems="center" justify="center">
+              <ModalHeader
+                fontSize="35px"
+                fontFamily="Nunito, sans-serif"
+                d="flex"
+                justifyContent="center"
               >
-                Update
-              </Button>
-            </FormControl>
-            <FormControl>
-              <Input
-                placeholder="Add User to group"
-                mb={1}
-                onChange={(e) => handleSearch(e.target.value)}
-              />
-            </FormControl>
+                {selectedChat.chatName}
+              </ModalHeader>
 
-            {loading ? (
-              <Spinner size="lg" />
-            ) : (
-              searchResult?.map((user) => (
-                <UserListItem
-                  key={user._id}
-                  user={user}
-                  handleFunction={() => handleAddUser(user)}
-                />
-              ))
-            )}
-          </ModalBody>
-          <ModalFooter>
-            <Button onClick={() => handleRemove(user)} colorScheme="red">
-              Leave Group
-            </Button>
-          </ModalFooter>
+              <ModalCloseButton />
+              <ModalBody d="flex" flexDir="column" alignItems="center">
+                <Box w="100%" d="flex" flexWrap="wrap" pb={3}>
+                  {selectedChat.users.map((u) => (
+                    <UserBadgeItem
+                      key={u._id}
+                      user={u}
+                      admin={selectedChat.groupAdmin}
+                      handleFunction={() => handleRemove(u)}
+                    />
+                  ))}
+                </Box>
+                <FormControl d="flex">
+                  <Input
+                    placeholder="Chat name"
+                    mb={3}
+                    sx={{ "::placeholder": { color: "black" } }}
+                    value={groupChatName}
+                    onChange={(e) => setGroupChatName(e.target.value)}
+                  />
+                  <Button
+                    variant="solid"
+                    colorScheme="teal"
+                    ml={1}
+                    isLoading={renameloading}
+                    onClick={handleRename}
+                  >
+                    Update
+                  </Button>
+                </FormControl>
+                <FormControl>
+                  <Input
+                    placeholder="Add user to group"
+                    sx={{ "::placeholder": { color: "black" } }}
+                    mb={1}
+                    onChange={(e) => handleSearch(e.target.value)}
+                  />
+                </FormControl>
+
+                {loading ? (
+                  <Spinner size="lg" />
+                ) : (
+                  searchResult?.map((user) => (
+                    <UserListItem
+                      key={user._id}
+                      user={user}
+                      handleFunction={() => handleAddUser(user)}
+                    />
+                  ))
+                )}
+              </ModalBody>
+              <ModalFooter>
+                <Button onClick={() => handleRemove(user)} colorScheme="red">
+                  Leave Group
+                </Button>
+              </ModalFooter>
+            </Flex>
+          </Box>
         </ModalContent>
       </Modal>
     </>

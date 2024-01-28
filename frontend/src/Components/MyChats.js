@@ -92,7 +92,6 @@ const MyChats = (fetchAgain) => {
         mt={4}
         p={3}
         w="100%"
-        bg="sky-blue;"
         borderRadius="lg"
         overflowY="hidden"
       >

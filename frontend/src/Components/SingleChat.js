@@ -208,26 +208,29 @@ const SingleChat = ({ fetchAgain, setFetchAgain }) => {
             flexDir="column"
             justifyContent="space-between"
             p={3}
-            bg="linear-gradient(to bottom, #ff3399 0%, #ff9966 100%)"
+            background="-webkit-linear-gradient(to right, #56B4D3, #348F50);" /* Chrome 10-25, Safari 5.1-6 */
             w="100%"
             h="91%"
             borderRadius="lg"
             overflowY="auto"
+            position="relative" // Add this to enable positioning context
           >
             {/* Messages */}
-            {loading ? (
-              <Spinner
-                size="xl"
-                w={20}
-                h={20}
-                alignSelf="center"
-                margin="auto"
-              />
-            ) : (
-              <div className="messages">
+            <div className="messages" style={{ flex: 1 }}>
+              {" "}
+              {/* Make messages div flexible */}
+              {loading ? (
+                <Spinner
+                  size="xl"
+                  w={20}
+                  h={20}
+                  alignSelf="center"
+                  margin="auto"
+                />
+              ) : (
                 <ScrollableChat messages={messages} />
-              </div>
-            )}
+              )}
+            </div>
 
             <FormControl
               onKeyDown={sendMessage}
@@ -235,6 +238,10 @@ const SingleChat = ({ fetchAgain, setFetchAgain }) => {
               isRequired
               mt={3}
               flexShrink={0}
+              position="absolute" // Set the position to absolute
+              bottom={0} // Fix the input at the bottom
+              left={0}
+              right={0}
             >
               {isTyping ? (
                 <div>
@@ -248,13 +255,15 @@ const SingleChat = ({ fetchAgain, setFetchAgain }) => {
               ) : (
                 <></>
               )}
-              <Input
-                variant="filled"
-                bg="#E0E0E0"
-                placeholder="Message"
-                value={newMessage}
-                onChange={typingHandler}
-              />
+              <Box>
+                <Input
+                  variant="filled"
+                  bg="#E0E0E0"
+                  placeholder="Message"
+                  value={newMessage}
+                  onChange={typingHandler}
+                />
+              </Box>
             </FormControl>
           </Box>
         </>
