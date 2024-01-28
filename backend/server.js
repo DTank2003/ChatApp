@@ -42,7 +42,7 @@ const io = require("socket.io")(server, {
 });
 
 io.on("connection", (socket) => {
-  console.log("connected to socket.io");
+  // console.log("connected to socket.io");
 
   socket.on("setup", (userData) => {
     socket.join(userData._id);
@@ -51,7 +51,7 @@ io.on("connection", (socket) => {
 
   socket.on("join chat", (room) => {
     socket.join(room);
-    console.log("joined room ", room);
+    // console.log("joined room ", room);
   });
 
   socket.on("typing", (room) => {
@@ -74,7 +74,7 @@ io.on("connection", (socket) => {
   });
 
   socket.off("setup", () => {
-    console.log("user disconnected");
+    // console.log("user disconnected");
     socket.leave(userData._id);
   });
 });

@@ -60,15 +60,15 @@ const MyChats = (fetchAgain) => {
       borderWidth="3px"
     >
       <Box
-        pb={3}
+        pb={2}
         px={3}
         fontSize={{ base: "28px", md: "30px" }}
         fontFamily="Nunito, sans-serif"
         d="flex"
         w="100%"
         bg="#524d9b -> #a8c0ff"
-        borderRadius="lg"
-        borderWidth="3px"
+        // borderRadius="lg"
+        // borderWidth="3px"
         // justifyContent="space-between"
         alignItems="center"
       >
@@ -80,6 +80,7 @@ const MyChats = (fetchAgain) => {
               fontFamily="Nunito, sans-serif"
               fontSize={{ base: "17px", md: "10px", lg: "17px" }}
               rightIcon={<AddIcon />}
+              bgColor="#ffbd03"
             >
               New Group Chat
             </Button>

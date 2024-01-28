@@ -133,66 +133,76 @@ const GroupChatModal = ({ children }) => {
       <Modal isOpen={isOpen} onClose={onClose}>
         <ModalOverlay />
         <ModalContent>
-          <ModalHeader
-            fontSize="35px"
-            fontFamily="Nunito, sans-serif"
-            d="flex"
-            justifyContent="center"
+          <Box
+            w="100%"
+            h="100%"
+            bgGradient="linear(to right, #108dc7, #ef8e38);"
+            borderRadius="md"
+            p={4}
           >
-            Create Group Chat
-          </ModalHeader>
-          <ModalCloseButton />
-          <ModalBody d="flex" flexDir="column" alignItems="center">
-            <FormControl>
-              <Input
-                placeholder="Chat Name"
-                mb={3}
-                onChange={(e) => setGroupChatName(e.target.value)}
-              />
-            </FormControl>
-            <FormControl>
-              <Input
-                placeholder="Add Users"
-                mb={1}
-                onChange={(e) => handleSearch(e.target.value)}
-              />
-            </FormControl>
-
-            <Box w="100%" d="flex" flexWrap="wrap">
-              {selectedUsers.map((u) => (
-                <UserBadgeItem
-                  key={u._id}
-                  user={u}
-                  handleFunction={() => handleDelete(u)}
+            <ModalHeader
+              fontSize="35px"
+              fontFamily="Nunito, sans-serif"
+              d="flex"
+              justifyContent="center"
+            >
+              Create Group Chat
+            </ModalHeader>
+            <ModalCloseButton />
+            <ModalBody d="flex" flexDir="column" alignItems="center">
+              <FormControl>
+                <Input
+                  placeholder="Chat Name"
+                  mb={3}
+                  sx={{ "::placeholder": { color: "black" } }}
+                  onChange={(e) => setGroupChatName(e.target.value)}
                 />
-              ))}
-            </Box>
+              </FormControl>
+              <FormControl>
+                <Input
+                  placeholder="Add Users"
+                  mb={1}
+                  sx={{ "::placeholder": { color: "black" } }}
+                  onChange={(e) => handleSearch(e.target.value)}
+                />
+              </FormControl>
 
-            {loading ? (
-              // <ChatLoading />
-              <div>
-                Loading Chat
-                <Spinner ml="auto" d="flex" />
-              </div>
-            ) : (
-              searchResult
-                ?.slice(0, 4)
-                .map((user) => (
-                  <UserListItem
-                    key={user._id}
-                    user={user}
-                    handleFunction={() => handleGroup(user)}
+              <Box w="100%" d="flex" flexWrap="wrap">
+                {selectedUsers.map((u) => (
+                  <UserBadgeItem
+                    key={u._id}
+                    user={u}
+                    handleFunction={() => handleDelete(u)}
                   />
-                ))
-            )}
-          </ModalBody>
+                ))}
+              </Box>
 
-          <ModalFooter>
-            <Button colorScheme="blue" onClick={handleSubmit}>
-              Create Chat
-            </Button>
-            <Button variant="ghost">Secondary Action</Button>
-          </ModalFooter>
+              {loading ? (
+                // <ChatLoading />
+                <div>
+                  Loading Chat
+                  <Spinner ml="auto" d="flex" />
+                </div>
+              ) : (
+                searchResult
+                  ?.slice(0, 4)
+                  .map((user) => (
+                    <UserListItem
+                      key={user._id}
+                      user={user}
+                      handleFunction={() => handleGroup(user)}
+                    />
+                  ))
+              )}
+            </ModalBody>
+
+            <ModalFooter>
+              <Button colorScheme="blue" onClick={handleSubmit}>
+                Create Chat
+              </Button>
+              <Button variant="ghost">Secondary Action</Button>
+            </ModalFooter>
+          </Box>
         </ModalContent>
       </Modal>
     </>

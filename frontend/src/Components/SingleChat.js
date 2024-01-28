@@ -183,6 +183,7 @@ const SingleChat = ({ fetchAgain, setFetchAgain }) => {
             alignItems="center"
           >
             <IconButton
+              mr={2}
               d={{ base: "flex", md: "none" }}
               icon={<ArrowBackIcon />}
               onClick={() => setSelectedChat("")}
@@ -210,7 +211,7 @@ const SingleChat = ({ fetchAgain, setFetchAgain }) => {
             p={3}
             background="-webkit-linear-gradient(to right, #56B4D3, #348F50);" /* Chrome 10-25, Safari 5.1-6 */
             w="100%"
-            h="91%"
+            h="85%"
             borderRadius="lg"
             overflowY="auto"
             position="relative" // Add this to enable positioning context
@@ -232,13 +233,12 @@ const SingleChat = ({ fetchAgain, setFetchAgain }) => {
               )}
             </div>
 
-            <FormControl
+            {/* <FormControl
               onKeyDown={sendMessage}
               id="first-name"
               isRequired
               mt={3}
               flexShrink={0}
-              position="absolute" // Set the position to absolute
               bottom={0} // Fix the input at the bottom
               left={0}
               right={0}
@@ -255,17 +255,45 @@ const SingleChat = ({ fetchAgain, setFetchAgain }) => {
               ) : (
                 <></>
               )}
-              <Box>
-                <Input
-                  variant="filled"
-                  bg="#E0E0E0"
-                  placeholder="Message"
-                  value={newMessage}
-                  onChange={typingHandler}
-                />
-              </Box>
-            </FormControl>
+              <Input
+                variant="filled"
+                bg="#E0E0E0"
+                placeholder="Message"
+                value={newMessage}
+                onChange={typingHandler}
+              />
+            </FormControl> */}
           </Box>
+          <FormControl
+            onKeyDown={sendMessage}
+            id="first-name"
+            isRequired
+            mt={3}
+            flexShrink={0}
+            bottom={0} // Fix the input at the bottom
+            left={0}
+            right={0}
+          >
+            {isTyping ? (
+              <div>
+                <Lottie
+                  options={defaultOptions}
+                  // height={50}
+                  width={70}
+                  style={{ marginBottom: 15, marginLeft: 0 }}
+                />
+              </div>
+            ) : (
+              <></>
+            )}
+            <Input
+              variant="filled"
+              bg="#E0E0E0"
+              placeholder="Message"
+              value={newMessage}
+              onChange={typingHandler}
+            />
+          </FormControl>
         </>
       ) : (
         <Box d="flex" alignItems="center" justifyContent="center" h="100%">

@@ -18,8 +18,8 @@ const ChatBox = ({ fetchAgain, setFetchAgain }) => {
       h="88%" // Ensure full height
       top="68px"
       bottom="30px"
-      borderRadius="lg"
-      borderWidth="3px"
+      // borderRadius="lg"
+      // borderWidth="3px"
       left="32.2%" // Position to the right of the white box (31% from the right edge)
       mr={4} // Add right margin
       mb={4} // Add bottom margin
