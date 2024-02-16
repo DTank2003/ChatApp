@@ -18,6 +18,7 @@ const Chatpage = () => {
         <Box
           d="flex"
           // justifyContent="space-between"
+          bg="linear-gradient( 135deg, #43CBFF 10%, #9708CC 100%);"
           w="100%"
           h="91.5vh"
           p="10px"

@@ -128,7 +128,7 @@ const SideDrawer = () => {
         display="flex"
         justifyContent="space-between"
         alignItems="center"
-        bg="#000080 -> #ff00ff"
+        bg="linear-gradient( 135deg, #43CBFF 10%, #9708CC 100%);"
         w="100%"
         fontFamily="Nunito, sans-serif"
         p="5px 10px 5px 10px"

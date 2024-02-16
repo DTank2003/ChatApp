@@ -209,7 +209,7 @@ const SingleChat = ({ fetchAgain, setFetchAgain }) => {
             flexDir="column"
             justifyContent="space-between"
             p={3}
-            background="-webkit-linear-gradient(to right, #56B4D3, #348F50);" /* Chrome 10-25, Safari 5.1-6 */
+            background="linear-gradient( 135deg, #FEB692 10%, #EA5455 100%);" /* Chrome 10-25, Safari 5.1-6 */
             w="100%"
             h="85%"
             borderRadius="lg"
@@ -232,37 +232,6 @@ const SingleChat = ({ fetchAgain, setFetchAgain }) => {
                 <ScrollableChat messages={messages} />
               )}
             </div>
-
-            {/* <FormControl
-              onKeyDown={sendMessage}
-              id="first-name"
-              isRequired
-              mt={3}
-              flexShrink={0}
-              bottom={0} // Fix the input at the bottom
-              left={0}
-              right={0}
-            >
-              {isTyping ? (
-                <div>
-                  <Lottie
-                    options={defaultOptions}
-                    // height={50}
-                    width={70}
-                    style={{ marginBottom: 15, marginLeft: 0 }}
-                  />
-                </div>
-              ) : (
-                <></>
-              )}
-              <Input
-                variant="filled"
-                bg="#E0E0E0"
-                placeholder="Message"
-                value={newMessage}
-                onChange={typingHandler}
-              />
-            </FormControl> */}
           </Box>
           <FormControl
             onKeyDown={sendMessage}

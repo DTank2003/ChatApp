@@ -12,8 +12,9 @@ const ChatBox = ({ fetchAgain, setFetchAgain }) => {
       flexDir="column"
       alignItems="stretch"
       p={3}
-      bg="#524d9b -> #a8c0ff"
+      bg="linear-gradient( 135deg, #FEB692 10%, #EA5455 100%);"
       position="absolute"
+      borderRadius="lg"
       w="67%" // Span the full width
       h="88%" // Ensure full height
       top="68px"

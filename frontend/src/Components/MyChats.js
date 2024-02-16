@@ -3,10 +3,10 @@ import { Box, Stack, Text } from "@chakra-ui/layout";
 import { useToast } from "@chakra-ui/toast";
 import axios from "axios";
 import { useEffect, useState } from "react";
-import { Button } from "@chakra-ui/react";
+import { Button, Avatar, Flex } from "@chakra-ui/react";
 import { ChatState } from "../Context/ChatProvider";
 import ChatLoading from "./ChatLoading";
-import { getSender } from "../config/ChatLogics";
+import { getProfilepic, getSender } from "../config/ChatLogics";
 import GroupChatModal from "./Miscellaneous/GroupChatModal";
 
 const MyChats = (fetchAgain) => {
@@ -51,7 +51,7 @@ const MyChats = (fetchAgain) => {
       alignItems="stretch"
       p={3}
       h="88%" // Ensure full height
-      bg="#524d9b -> #a8c0ff"
+      bg="linear-gradient( 135deg, #43CBFF 10%, #9708CC 100%);"
       w={{ base: "100%", md: "31%" }}
       position="absolute"
       top="68px"
@@ -103,7 +103,8 @@ const MyChats = (fetchAgain) => {
             fontFamily="Nunito, sans-serif"
           >
             {chats.map((chat) => (
-              <Box
+              <Flex
+                alignItems="center"
                 onClick={() => setSelectedChat(chat)}
                 cursor="pointer"
                 bg={selectedChat === chat ? "#38B2AC" : "#E8E8E8"}
@@ -113,12 +114,21 @@ const MyChats = (fetchAgain) => {
                 borderRadius="lg"
                 key={chat._id}
               >
+                <Avatar
+                  src={
+                    !chat.isGroupChat
+                      ? getProfilepic(loggedUser, chat.users)
+                      : chat.chatName
+                  }
+                  size="sm"
+                  mr={2}
+                />
                 <Text>
                   {!chat.isGroupChat
                     ? getSender(loggedUser, chat.users)
                     : chat.chatName}
                 </Text>
-              </Box>
+              </Flex>
             ))}
           </Stack>
         ) : (

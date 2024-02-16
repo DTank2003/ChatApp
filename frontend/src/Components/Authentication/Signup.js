@@ -1,6 +1,14 @@
-import { Button, FormControl, FormLabel, Input, InputGroup, InputRightElement, VStack } from '@chakra-ui/react'
-import React, {useState} from 'react'
-import { useToast } from '@chakra-ui/react';
+import {
+  Button,
+  FormControl,
+  FormLabel,
+  Input,
+  InputGroup,
+  InputRightElement,
+  VStack,
+} from "@chakra-ui/react";
+import React, { useState } from "react";
+import { useToast } from "@chakra-ui/react";
 import { useHistory } from "react-router-dom";
 import axios from "axios";
 
@@ -14,10 +22,10 @@ const Signup = () => {
   const [loading, setLoading] = useState(false);
   const history = useHistory();
   const toast = useToast();
-  
+
   const handleClick = () => setShow(!show);
 
-  const postDetails = (pics) => { 
+  const postDetails = (pics) => {
     setLoading(true);
     if (pics === undefined) {
       toast({
@@ -28,7 +36,7 @@ const Signup = () => {
         position: "bottom",
       });
       return;
-    } 
+    }
     if (pics.type === "image/jpeg" || pics.type === "image/png") {
       const data = new FormData();
       data.append("file", pics);
@@ -47,13 +55,12 @@ const Signup = () => {
           console.log(error);
           setLoading(false);
         });
-    }
-    else {
+    } else {
       toast({
         title: "Please select an image!",
         status: "warning",
         duration: 5000,
-        isCloasable: true,
+        isClosable: true,
         position: "bottom",
       });
       setLoading(false);
@@ -61,7 +68,7 @@ const Signup = () => {
     }
   };
 
-  const submitHandler = async() => { 
+  const submitHandler = async () => {
     setLoading(true);
     if (!name || !email || !password || !confirmpassword) {
       toast({
@@ -187,9 +194,12 @@ const Signup = () => {
         width="100%"
         style={{ marginTop: 15 }}
         onClick={submitHandler}
-        isLoading={loading}>SignUp</Button>
+        isLoading={loading}
+      >
+        SignUp
+      </Button>
     </VStack>
   );
-}
+};
 
-export default Signup
+export default Signup;

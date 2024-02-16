@@ -136,7 +136,7 @@ const GroupChatModal = ({ children }) => {
           <Box
             w="100%"
             h="100%"
-            bgGradient="linear(to right, #108dc7, #ef8e38);"
+            bgGradient="linear-gradient(160deg, #0093E9 0%, #80D0C7 100%);"
             borderRadius="md"
             p={4}
           >
